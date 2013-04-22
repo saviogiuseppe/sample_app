@@ -9,7 +9,11 @@ describe "StaticPages" do
     end
 	it "should have the title 'Home'" do
 	  visit '/static_pages/home'
-	  page.should have_selector('title', :text => "#{base_title} | Home") #any substring will work
+	  page.should have_selector('title', :text => "#{base_title}") #any substring will work
+	end
+	it "should not have a custom page title" do
+	  visit '/static_pages/home'
+	  page.should_not have_selector('title', :text => ' | Home')
 	end
   end
   
